@@ -8,3 +8,179 @@ info: Server starting at port 4000
 info: Server starting at port 4000
 info: Server starting at port 4001
 info: Server starting at port 8000
+info: Server starting at port 8000
+info: Server starting at port 8000
+info: Error conecting to server:  ⨯ Unable to compile TypeScript:
+[96msrc/entities/User.ts[0m:[93m3[0m:[93m2[0m - [91merror[0m[90m TS1238: [0mUnable to resolve signature of class decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 1.
+
+[7m3[0m @Entity()
+[7m [0m [91m ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m5[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m5[0m   @PrimaryGeneratedColumn()
+[7m [0m [91m   ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.
+
+[7m6[0m   id: number;
+[7m [0m [91m  ~~[0m
+[96msrc/entities/User.ts[0m:[93m8[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m8[0m   @Column()
+[7m [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'name' has no initializer and is not definitely assigned in the constructor.
+
+[7m9[0m   name: string;
+[7m [0m [91m  ~~~~[0m
+[96msrc/entities/User.ts[0m:[93m11[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m11[0m   @Column()
+[7m  [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'email' has no initializer and is not definitely assigned in the constructor.
+
+[7m12[0m   email: string;
+[7m  [0m [91m  ~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m14[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m14[0m   @Column()
+[7m  [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'password' has no initializer and is not definitely assigned in the constructor.
+
+[7m15[0m   password: string;
+[7m  [0m [91m  ~~~~~~~~[0m
+ {"diagnosticCodes":[1238,1240,2564,1240,2564,1240,2564,1240,2564],"stack":"TSError: ⨯ Unable to compile TypeScript:\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m3\u001b[0m:\u001b[93m2\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1238: \u001b[0mUnable to resolve signature of class decorator when called as an expression.\r\n  The runtime will invoke the decorator with 2 arguments, but the decorator expects 1.\r\n\r\n\u001b[7m3\u001b[0m @Entity()\r\n\u001b[7m \u001b[0m \u001b[91m ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m5\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m5\u001b[0m   @PrimaryGeneratedColumn()\r\n\u001b[7m \u001b[0m \u001b[91m   ~~~~~~~~~~~~~~~~~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m6\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'id' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m6\u001b[0m   id: number;\r\n\u001b[7m \u001b[0m \u001b[91m  ~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m8\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m8\u001b[0m   @Column()\r\n\u001b[7m \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m9\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'name' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m9\u001b[0m   name: string;\r\n\u001b[7m \u001b[0m \u001b[91m  ~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m11\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m11\u001b[0m   @Column()\r\n\u001b[7m  \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m12\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'email' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m12\u001b[0m   email: string;\r\n\u001b[7m  \u001b[0m \u001b[91m  ~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m14\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m14\u001b[0m   @Column()\r\n\u001b[7m  \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m15\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'password' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m15\u001b[0m   password: string;\r\n\u001b[7m  \u001b[0m \u001b[91m  ~~~~~~~~\u001b[0m\r\n\n    at createTSError (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:859:12)\n    at reportTSError (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:863:19)\n    at getOutput (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1077:36)\n    at Object.compile (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1433:41)\n    at Module.m._compile (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1617:30)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1180:10)\n    at Object.require.extensions.<computed> [as .ts] (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1004:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:839:12)\n    at Module.require (node:internal/modules/cjs/loader:1028:19)"}
+info: Error conecting to server:  ⨯ Unable to compile TypeScript:
+[96msrc/entities/User.ts[0m:[93m3[0m:[93m2[0m - [91merror[0m[90m TS1238: [0mUnable to resolve signature of class decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 1.
+
+[7m3[0m @Entity()
+[7m [0m [91m ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m5[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m5[0m   @PrimaryGeneratedColumn()
+[7m [0m [91m   ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.
+
+[7m6[0m   id: number;
+[7m [0m [91m  ~~[0m
+[96msrc/entities/User.ts[0m:[93m8[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m8[0m   @Column()
+[7m [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'name' has no initializer and is not definitely assigned in the constructor.
+
+[7m9[0m   name: string;
+[7m [0m [91m  ~~~~[0m
+[96msrc/entities/User.ts[0m:[93m11[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m11[0m   @Column()
+[7m  [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'email' has no initializer and is not definitely assigned in the constructor.
+
+[7m12[0m   email: string;
+[7m  [0m [91m  ~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m14[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m14[0m   @Column()
+[7m  [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'password' has no initializer and is not definitely assigned in the constructor.
+
+[7m15[0m   password: string;
+[7m  [0m [91m  ~~~~~~~~[0m
+ {"diagnosticCodes":[1238,1240,2564,1240,2564,1240,2564,1240,2564],"stack":"TSError: ⨯ Unable to compile TypeScript:\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m3\u001b[0m:\u001b[93m2\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1238: \u001b[0mUnable to resolve signature of class decorator when called as an expression.\r\n  The runtime will invoke the decorator with 2 arguments, but the decorator expects 1.\r\n\r\n\u001b[7m3\u001b[0m @Entity()\r\n\u001b[7m \u001b[0m \u001b[91m ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m5\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m5\u001b[0m   @PrimaryGeneratedColumn()\r\n\u001b[7m \u001b[0m \u001b[91m   ~~~~~~~~~~~~~~~~~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m6\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'id' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m6\u001b[0m   id: number;\r\n\u001b[7m \u001b[0m \u001b[91m  ~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m8\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m8\u001b[0m   @Column()\r\n\u001b[7m \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m9\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'name' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m9\u001b[0m   name: string;\r\n\u001b[7m \u001b[0m \u001b[91m  ~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m11\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m11\u001b[0m   @Column()\r\n\u001b[7m  \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m12\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'email' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m12\u001b[0m   email: string;\r\n\u001b[7m  \u001b[0m \u001b[91m  ~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m14\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m14\u001b[0m   @Column()\r\n\u001b[7m  \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m15\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'password' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m15\u001b[0m   password: string;\r\n\u001b[7m  \u001b[0m \u001b[91m  ~~~~~~~~\u001b[0m\r\n\n    at createTSError (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:859:12)\n    at reportTSError (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:863:19)\n    at getOutput (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1077:36)\n    at Object.compile (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1433:41)\n    at Module.m._compile (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1617:30)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1180:10)\n    at Object.require.extensions.<computed> [as .ts] (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1004:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:839:12)\n    at Module.require (node:internal/modules/cjs/loader:1028:19)"}
+info: Error conecting to server:  ⨯ Unable to compile TypeScript:
+[96msrc/entities/User.ts[0m:[93m3[0m:[93m2[0m - [91merror[0m[90m TS1238: [0mUnable to resolve signature of class decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 1.
+
+[7m3[0m @Entity()
+[7m [0m [91m ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m5[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m5[0m   @PrimaryGeneratedColumn()
+[7m [0m [91m   ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.
+
+[7m6[0m   id: number;
+[7m [0m [91m  ~~[0m
+[96msrc/entities/User.ts[0m:[93m8[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m8[0m   @Column()
+[7m [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'name' has no initializer and is not definitely assigned in the constructor.
+
+[7m9[0m   name: string;
+[7m [0m [91m  ~~~~[0m
+[96msrc/entities/User.ts[0m:[93m11[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m11[0m   @Column()
+[7m  [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'email' has no initializer and is not definitely assigned in the constructor.
+
+[7m12[0m   email: string;
+[7m  [0m [91m  ~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m14[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m14[0m   @Column()
+[7m  [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'password' has no initializer and is not definitely assigned in the constructor.
+
+[7m15[0m   password: string;
+[7m  [0m [91m  ~~~~~~~~[0m
+ {"diagnosticCodes":[1238,1240,2564,1240,2564,1240,2564,1240,2564],"stack":"TSError: ⨯ Unable to compile TypeScript:\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m3\u001b[0m:\u001b[93m2\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1238: \u001b[0mUnable to resolve signature of class decorator when called as an expression.\r\n  The runtime will invoke the decorator with 2 arguments, but the decorator expects 1.\r\n\r\n\u001b[7m3\u001b[0m @Entity()\r\n\u001b[7m \u001b[0m \u001b[91m ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m5\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m5\u001b[0m   @PrimaryGeneratedColumn()\r\n\u001b[7m \u001b[0m \u001b[91m   ~~~~~~~~~~~~~~~~~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m6\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'id' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m6\u001b[0m   id: number;\r\n\u001b[7m \u001b[0m \u001b[91m  ~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m8\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m8\u001b[0m   @Column()\r\n\u001b[7m \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m9\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'name' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m9\u001b[0m   name: string;\r\n\u001b[7m \u001b[0m \u001b[91m  ~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m11\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m11\u001b[0m   @Column()\r\n\u001b[7m  \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m12\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'email' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m12\u001b[0m   email: string;\r\n\u001b[7m  \u001b[0m \u001b[91m  ~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m14\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m14\u001b[0m   @Column()\r\n\u001b[7m  \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m15\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'password' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m15\u001b[0m   password: string;\r\n\u001b[7m  \u001b[0m \u001b[91m  ~~~~~~~~\u001b[0m\r\n\n    at createTSError (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:859:12)\n    at reportTSError (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:863:19)\n    at getOutput (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1077:36)\n    at Object.compile (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1433:41)\n    at Module.m._compile (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1617:30)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1180:10)\n    at Object.require.extensions.<computed> [as .ts] (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1004:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:839:12)\n    at Module.require (node:internal/modules/cjs/loader:1028:19)"}
+info: Error conecting to server:  ⨯ Unable to compile TypeScript:
+[96msrc/entities/User.ts[0m:[93m3[0m:[93m2[0m - [91merror[0m[90m TS1238: [0mUnable to resolve signature of class decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 1.
+
+[7m3[0m @Entity()
+[7m [0m [91m ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m5[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m5[0m   @PrimaryGeneratedColumn()
+[7m [0m [91m   ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m6[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.
+
+[7m6[0m   id: number;
+[7m [0m [91m  ~~[0m
+[96msrc/entities/User.ts[0m:[93m8[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m8[0m   @Column()
+[7m [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m9[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'name' has no initializer and is not definitely assigned in the constructor.
+
+[7m9[0m   name: string;
+[7m [0m [91m  ~~~~[0m
+[96msrc/entities/User.ts[0m:[93m11[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m11[0m   @Column()
+[7m  [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m12[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'email' has no initializer and is not definitely assigned in the constructor.
+
+[7m12[0m   email: string;
+[7m  [0m [91m  ~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m14[0m:[93m4[0m - [91merror[0m[90m TS1240: [0mUnable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+[7m14[0m   @Column()
+[7m  [0m [91m   ~~~~~~~~[0m
+[96msrc/entities/User.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'password' has no initializer and is not definitely assigned in the constructor.
+
+[7m15[0m   password: string;
+[7m  [0m [91m  ~~~~~~~~[0m
+ {"diagnosticCodes":[1238,1240,2564,1240,2564,1240,2564,1240,2564],"stack":"TSError: ⨯ Unable to compile TypeScript:\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m3\u001b[0m:\u001b[93m2\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1238: \u001b[0mUnable to resolve signature of class decorator when called as an expression.\r\n  The runtime will invoke the decorator with 2 arguments, but the decorator expects 1.\r\n\r\n\u001b[7m3\u001b[0m @Entity()\r\n\u001b[7m \u001b[0m \u001b[91m ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m5\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m5\u001b[0m   @PrimaryGeneratedColumn()\r\n\u001b[7m \u001b[0m \u001b[91m   ~~~~~~~~~~~~~~~~~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m6\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'id' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m6\u001b[0m   id: number;\r\n\u001b[7m \u001b[0m \u001b[91m  ~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m8\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m8\u001b[0m   @Column()\r\n\u001b[7m \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m9\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'name' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m9\u001b[0m   name: string;\r\n\u001b[7m \u001b[0m \u001b[91m  ~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m11\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m11\u001b[0m   @Column()\r\n\u001b[7m  \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m12\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'email' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m12\u001b[0m   email: string;\r\n\u001b[7m  \u001b[0m \u001b[91m  ~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m14\u001b[0m:\u001b[93m4\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS1240: \u001b[0mUnable to resolve signature of property decorator when called as an expression.\r\n  Argument of type 'undefined' is not assignable to parameter of type 'Object'.\r\n\r\n\u001b[7m14\u001b[0m   @Column()\r\n\u001b[7m  \u001b[0m \u001b[91m   ~~~~~~~~\u001b[0m\r\n\u001b[96msrc/entities/User.ts\u001b[0m:\u001b[93m15\u001b[0m:\u001b[93m3\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2564: \u001b[0mProperty 'password' has no initializer and is not definitely assigned in the constructor.\r\n\r\n\u001b[7m15\u001b[0m   password: string;\r\n\u001b[7m  \u001b[0m \u001b[91m  ~~~~~~~~\u001b[0m\r\n\n    at createTSError (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:859:12)\n    at reportTSError (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:863:19)\n    at getOutput (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1077:36)\n    at Object.compile (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1433:41)\n    at Module.m._compile (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1617:30)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1180:10)\n    at Object.require.extensions.<computed> [as .ts] (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\ts-node\\src\\index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1004:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:839:12)\n    at Module.require (node:internal/modules/cjs/loader:1028:19)"}
+info: Server starting at port 8000
+info: Server starting at port 8000
