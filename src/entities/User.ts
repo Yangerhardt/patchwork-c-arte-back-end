@@ -1,53 +1,91 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
-import { v4 as uuidv4 } from "uuid";
+import {
+  Entity,
+  Column,
+  Index,
+  BeforeInsert,
+  ManyToMany,
+  JoinColumn,
+} from "typeorm";
+import Model from "./model.entity";
+import crypto from "crypto";
+import bcrypt from "bcryptjs";
+import { Product } from "./Product";
 
-@Entity()
-export class User {
-  @PrimaryColumn("uuid")
-  id: string;
+export enum userRole {
+  USER = "user",
+  ADMIN = "admin",
+  GUEST = "guest",
+}
+
+@Entity("users")
+export class User extends Model {
+  @Column()
+  role: string;
 
   @Column()
-  private name: string;
+  name: string;
 
   @Column()
-  private lastName: string;
+  lastName: string;
+
+  @Index("email_index")
+  @Column({ unique: true })
+  email: string;
 
   @Column()
-  private email: string;
-
-  @Column()
-  private password: string;
+  password: string;
 
   @Column({ length: 8 })
-  private zip: string;
+  zip: string;
 
   @Column()
-  private nieghborhood: string;
+  neighborhood: string;
 
   @Column()
-  private street: string;
+  street: string;
 
   @Column()
-  private streetNumber: string;
+  streetNumber: string;
 
   @Column()
-  private streetComplement: string;
+  streetComplement: string;
 
   @Column()
-  private city: string;
+  city: string;
 
   @Column({ length: 2 })
-  private state: string;
+  state: string;
 
-  constructor() {
-    this.id = uuidv4();
+  @ManyToMany(() => Product, (product) => product.users)
+  @JoinColumn()
+  products: Product[];
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 12);
   }
 
-  public setName(value: string) {
-    this.name = value;
+  static async comparePasswords(userPassword: string, hashedPassword: string) {
+    return await bcrypt.compare(userPassword, hashedPassword);
   }
 
-  public getName() {
-    return this.name;
+  static createVerificationCode() {
+    const verificationCode = crypto.randomBytes(32).toString("hex");
+
+    const hashedVerificationCode = crypto
+      .createHash("sha256")
+      .update(verificationCode)
+      .digest("hex");
+
+    return { verificationCode, hashedVerificationCode };
+  }
+
+  toJSON() {
+    return {
+      ...this,
+      password: undefined,
+      verified: undefined,
+      verificationCode: undefined,
+    };
   }
 }
