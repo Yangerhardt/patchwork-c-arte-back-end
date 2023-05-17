@@ -1,5 +1,4 @@
-import { IsEnum, IsNotEmpty, IsString, IsEmail, Length } from "class-validator";
-import { userRole } from "../User";
+import { IsNotEmpty, IsString, IsEmail, Length } from "class-validator";
 
 export class UserValidation {
   @IsString()

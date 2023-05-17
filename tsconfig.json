@@ -14,7 +14,7 @@
     "module": "commonjs",
     "moduleResolution": "Node",
     "outDir": "./build",
-    "rootDir": "./src",
+    "rootDir": "./",
     "allowJs": true,
     "declaration": true,
     "declarationMap": true,

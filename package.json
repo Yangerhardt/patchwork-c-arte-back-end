@@ -28,6 +28,7 @@
     "reflect-metadata": "^0.1.13",
     "tedis": "^0.1.12",
     "ts-node": "^10.9.1",
+    "tsyringe": "^4.7.0",
     "typeorm": "^0.3.15",
     "typescript": "^5.0.4",
     "uuid": "^9.0.0",

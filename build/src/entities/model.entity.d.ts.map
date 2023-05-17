@@ -1,0 +1,1 @@
+{"version":3,"file":"model.entity.d.ts","sourceRoot":"","sources":["../../../src/entities/model.entity.ts"],"names":[],"mappings":"AAAA,OAAO,EACL,UAAU,EAKX,MAAM,SAAS,CAAC;AAEjB,MAAM,CAAC,OAAO,CAAC,QAAQ,OAAO,KAAM,SAAQ,UAAU;IAEpD,EAAE,EAAE,MAAM,CAAC;IAGX,UAAU,EAAE,IAAI,CAAC;IAGjB,UAAU,EAAE,IAAI,CAAC;IAGjB,OAAO,EAAE,OAAO,CAAC;IAGjB,UAAU,EAAE,IAAI,CAAC;CAClB"}

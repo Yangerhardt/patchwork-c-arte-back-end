@@ -1,17 +1,17 @@
-import 'reflect-metadata';
-import { createConnection } from 'typeorm';
-import express from 'express';
-import { userRouter } from './routes/user.routes';
-import config from './ormcofig';
-import cors from 'cors';
-import winston from 'winston';
+import "reflect-metadata";
+import { createConnection } from "typeorm";
+import express from "express";
+import { userRouter } from "./routes/user.routes";
+import cors from "cors";
+import winston from "winston";
+import config from "./ormconfig";
 
 const logger = winston.createLogger({
-  level: 'info',
+  level: "info",
   format: winston.format.simple(),
   transports: [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: 'logs.log' }),
+    new winston.transports.File({ filename: "logs.log" }),
   ],
 });
 
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use('/users', userRouter);
+app.use("/users", userRouter);
 
 async function startServer() {
   try {
@@ -32,7 +32,7 @@ async function startServer() {
       logger.info(`Server starting at port ${port}`);
     });
   } catch (error) {
-    logger.info('Error conecting to server: ', error);
+    logger.info("Error conecting to server: ", error);
   }
 }
 

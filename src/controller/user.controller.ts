@@ -6,7 +6,6 @@ import {
   mapUserValidationData,
   validateUser,
 } from "../utils/createNewUser";
-import { User } from "../entities/User";
 
 export class UserController {
   private readonly userService: UserService;
