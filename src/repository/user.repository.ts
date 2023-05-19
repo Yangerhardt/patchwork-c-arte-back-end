@@ -1,46 +1,47 @@
-import { EntityRepository, Repository } from "typeorm";
-import { User } from "../entities/User";
+import { CreateOptions, UpdateOptions } from "sequelize";
+import User from "../entities/User";
 
-@EntityRepository(User)
-export class UserRepository extends Repository<User> {
+export class UserRepository {
   async findAllUsers(): Promise<User[]> {
-    return this.find();
+    return User.findAll();
   }
 
-  async findUserByEmail(email: string): Promise<User | undefined> {
-    return this.findOne({ where: { email } });
+  async findUserByEmail(email: string): Promise<User | null> {
+    return User.findOne({ where: { email } });
   }
 
-  async findUserById(id: string): Promise<User | undefined> {
-    return this.findOne({ where: { id } });
+  async findUserById(id: string): Promise<User | null> {
+    return User.findByPk(id);
   }
 
-  async createUser(user: User): Promise<User> {
-    return this.save(user);
+  async createUser(
+    user: Partial<User>,
+    options?: CreateOptions<User>
+  ): Promise<User> {
+    return User.create(user, options);
   }
 
   async updateUser(
     id: string,
-    updatedUser: Partial<User>
-  ): Promise<User | undefined> {
-    const user = await this.findOne({ where: { id } });
-
+    updatedUser: Partial<User>,
+    options?: UpdateOptions<User>
+  ): Promise<User | null> {
+    const user = await User.findByPk(id);
     if (!user) {
-      throw new Error(`User with ${id} not found`);
+      throw new Error(`User with ID ${id} not found`);
     }
 
-    user.updated_at = new Date();
-    Object.assign(user, updatedUser);
-    return this.save(user);
+    return user.update(updatedUser, options);
   }
 
-  async deleteUser(id: string): Promise<User | undefined> {
-    const user = await this.findOne({ where: { id } });
+  async deleteUser(id: string): Promise<User | null> {
+    const user = await User.findByPk(id);
     if (!user) {
-      throw new Error(`User with ${id} not found`);
+      throw new Error(`User with ID ${id} not found`);
     }
+
     user.deleted = true;
     user.deleted_at = new Date();
-    return this.save(user);
+    return user.save();
   }
 }

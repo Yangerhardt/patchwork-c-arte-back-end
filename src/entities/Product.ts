@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToMany } from "typeorm";
-import Model from "./model.entity";
+import BaseModel from "./Model";
 import { User } from "./User";
 
 enum categoryType {
@@ -10,8 +10,8 @@ enum categoryType {
   MASK = "Máscara",
 }
 
-@Entity()
-export class Product extends Model {
+@Entity("products")
+export class Product extends BaseModel {
   @Column()
   name: string;
 

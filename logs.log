@@ -1,6 +1,12 @@
 info: Server starting at port 8000
 info: Server starting at port 8000
-info: Error conecting to server:  Cannot inject the dependency "userController" at position #0 of "UserRouter" constructor. Reason:
-    Attempted to resolve unregistered dependency token: "UserController" {"stack":"Error: Cannot inject the dependency \"userController\" at position #0 of \"UserRouter\" constructor. Reason:\n    Attempted to resolve unregistered dependency token: \"UserController\"\n    at C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\tsyringe\\dist\\cjs\\dependency-container.js:324:23\n    at Array.map (<anonymous>)\n    at C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\tsyringe\\dist\\cjs\\dependency-container.js:295:38\n    at InternalDependencyContainer.construct (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\tsyringe\\dist\\cjs\\dependency-container.js:297:11)\n    at InternalDependencyContainer.resolve (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\node_modules\\tsyringe\\dist\\cjs\\dependency-container.js:114:33)\n    at startServer (C:\\Users\\Yan\\Desktop\\Projetos\\React\\patchwork-com-arte-node\\src\\index.ts:29:34)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"}
+info: Server starting at port 8000
+info: Server starting at port 8000
+info: Server starting at port 8000
+info: Server starting at port 8000
+info: Server starting at port 8000
+info: Server starting at port 8000
+info: Server starting at port 8000
+info: Server starting at port 8000
 info: Server starting at port 8000
 info: Server starting at port 8000

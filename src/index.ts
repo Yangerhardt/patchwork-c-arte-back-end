@@ -1,10 +1,9 @@
 import "reflect-metadata";
-import { createConnection } from "typeorm";
 import express from "express";
 import { userRouter } from "./routes/user.routes";
 import cors from "cors";
 import winston from "winston";
-import config from "./ormconfig";
+import sequelize from "./config/sequelize";
 
 const logger = winston.createLogger({
   level: "info",
@@ -25,7 +24,8 @@ app.use("/users", userRouter);
 
 async function startServer() {
   try {
-    await createConnection(config);
+    await sequelize.authenticate();
+    // await sequelize.sync();
 
     const port = process.env.PORT || 4000;
     app.listen(port, () => {

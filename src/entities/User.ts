@@ -1,91 +1,139 @@
-import {
-  Entity,
-  Column,
-  Index,
-  BeforeInsert,
-  ManyToMany,
-  JoinColumn,
-} from "typeorm";
-import Model from "./model.entity";
-import crypto from "crypto";
-import bcrypt from "bcryptjs";
-import { Product } from "./Product";
+import { DataTypes, Model } from "sequelize";
+import sequelize from "../config/sequelize";
+import { UUID } from "crypto";
 
-export enum userRole {
-  USER = "user",
-  ADMIN = "admin",
-  GUEST = "guest",
+class User extends Model {
+  public id!: UUID;
+  public created_at!: Date;
+  public updated_at!: Date;
+  public deleted!: boolean;
+  public deleted_at!: Date;
+  public name!: string;
+  public role!: string;
+  public lastName!: string;
+  public email!: string;
+  public password!: string;
+  public zip!: string;
+  public neighborhood!: string;
+  public street!: string;
+  public streetNumber!: string;
+  public streetComplement!: string;
+  public city!: string;
+  public state!: string;
+
+  // static associate() {
+  //   this.belongsToMany(Product, {
+  //     through: "UserProduct",
+  //     foreignKey: "userId",
+  //   });
+  // }
 }
 
-@Entity("users")
-export class User extends Model {
-  @Column()
-  role: string;
+User.init(
+  {
+    id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      primaryKey: true,
+    },
 
-  @Column()
-  name: string;
+    deleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: true,
+    },
 
-  @Column()
-  lastName: string;
+    deleted_at: {
+      type: DataTypes.DATE,
+      defaultValue: null,
+      allowNull: true,
+    },
 
-  @Index("email_index")
-  @Column({ unique: true })
-  email: string;
-
-  @Column()
-  password: string;
-
-  @Column({ length: 8 })
-  zip: string;
-
-  @Column()
-  neighborhood: string;
-
-  @Column()
-  street: string;
-
-  @Column()
-  streetNumber: string;
-
-  @Column()
-  streetComplement: string;
-
-  @Column()
-  city: string;
-
-  @Column({ length: 2 })
-  state: string;
-
-  @ManyToMany(() => Product, (product) => product.users)
-  @JoinColumn()
-  products: Product[];
-
-  @BeforeInsert()
-  async hashPassword() {
-    this.password = await bcrypt.hash(this.password, 12);
+    role: {
+      type: DataTypes.ENUM,
+      values: ["USER", "ADMIN", "GUEST"],
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      field: "email",
+      validate: {
+        isEmail: {
+          msg: "Invalid email format",
+        },
+      },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isStrongPassword: {
+          minLowercase: 1,
+          minUppercase: 1,
+          minNumbers: 1,
+          minSymbols: 1,
+          errorMessage:
+            "Password must have at least 1 lowerCase, 1 upperCase, 1 symbol and 1 number",
+        },
+      },
+    },
+    zip: {
+      type: DataTypes.STRING(8),
+      allowNull: false,
+      validate: {
+        isNumeric: {
+          msg: "Must be only numbers",
+        },
+      },
+    },
+    neighborhood: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    street: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    streetNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isNumeric: {
+          msg: "Must be only numbers",
+        },
+      },
+    },
+    streetComplement: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING(2),
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    modelName: "User",
+    tableName: "users",
+    timestamps: false,
   }
+);
 
-  static async comparePasswords(userPassword: string, hashedPassword: string) {
-    return await bcrypt.compare(userPassword, hashedPassword);
-  }
+// User.associate();
 
-  static createVerificationCode() {
-    const verificationCode = crypto.randomBytes(32).toString("hex");
-
-    const hashedVerificationCode = crypto
-      .createHash("sha256")
-      .update(verificationCode)
-      .digest("hex");
-
-    return { verificationCode, hashedVerificationCode };
-  }
-
-  toJSON() {
-    return {
-      ...this,
-      password: undefined,
-      verified: undefined,
-      verificationCode: undefined,
-    };
-  }
-}
+export default User;

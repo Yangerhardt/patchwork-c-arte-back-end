@@ -1,27 +1,26 @@
-import { User } from "../entities/User";
-import { UserValidation } from "../entities/dto/UserValidation";
+import User from "../entities/User";
 import { validate } from "class-validator";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function mapUserValidationData(reqBody: any): UserValidation {
-  const userValidation = new UserValidation();
-  userValidation.role = reqBody.role;
-  userValidation.name = reqBody.name;
-  userValidation.lastName = reqBody.lastName;
-  userValidation.email = reqBody.email;
-  userValidation.password = reqBody.password;
-  userValidation.zip = reqBody.zip;
-  userValidation.neighborhood = reqBody.neighborhood;
-  userValidation.street = reqBody.street;
-  userValidation.streetNumber = reqBody.streetNumber;
-  userValidation.streetComplement = reqBody.streetComplement;
-  userValidation.city = reqBody.city;
-  userValidation.state = reqBody.state;
+export function mapUserValidationData(reqBody: any): User {
+  const user = new User();
+  user.role = reqBody.role;
+  user.name = reqBody.name;
+  user.lastName = reqBody.lastName;
+  user.email = reqBody.email;
+  user.password = reqBody.password;
+  user.zip = reqBody.zip;
+  user.neighborhood = reqBody.neighborhood;
+  user.street = reqBody.street;
+  user.streetNumber = reqBody.streetNumber;
+  user.streetComplement = reqBody.streetComplement;
+  user.city = reqBody.city;
+  user.state = reqBody.state;
 
-  return userValidation;
+  return user;
 }
 
-export async function validateUser(user: UserValidation): Promise<string[]> {
+export async function validateUser(user: User): Promise<string[]> {
   const validationErrors = await validate(user);
   const errors: string[] = [];
 
@@ -36,9 +35,7 @@ export async function validateUser(user: UserValidation): Promise<string[]> {
   return errors;
 }
 
-export function createNewUserFromValidation(
-  userValidation: UserValidation
-): User {
+export function createNewUserFromValidation(userValidation: User): User {
   const user = new User();
   user.role = userValidation.role;
   user.name = userValidation.name;
