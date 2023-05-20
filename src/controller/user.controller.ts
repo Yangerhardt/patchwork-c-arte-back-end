@@ -1,7 +1,12 @@
 import { Request, Response } from "express";
 import { validate } from "class-validator";
 import { UserService } from "../service/user.serivce";
-import { mapUserValidationData, validateUser } from "../utils/createNewUser";
+import {
+  mapUserValidationData,
+  userToUserDTO,
+  usersToUserDTOs,
+  validateUser,
+} from "../utils/createNewUser";
 import User from "../entities/User";
 
 export class UserController {
@@ -21,8 +26,9 @@ export class UserController {
       }
 
       const createdUser = await this.userService.createUser(userValidation);
+      const userDTO = userToUserDTO(createdUser);
 
-      return res.status(201).json(createdUser);
+      return res.status(201).json(userDTO);
     } catch (error) {
       return res.status(500).json({ error: "Internal server error: " + error });
     }
@@ -36,7 +42,9 @@ export class UserController {
         return res.status(404).json({ error: "No user in the database" });
       }
 
-      return res.json(users);
+      const usersDTO = usersToUserDTOs(users);
+
+      return res.json(usersDTO);
     } catch (error) {
       return res.status(500).json({ error: "Internal server error" });
     }
@@ -51,7 +59,8 @@ export class UserController {
         return res.status(404).json({ error: "User not found" });
       }
 
-      return res.json(user);
+      const userDTO = userToUserDTO(user);
+      return res.json(userDTO);
     } catch (error) {
       return res.status(500).json({ error: "Internal server error" });
     }
@@ -76,7 +85,8 @@ export class UserController {
         return res.status(404).json({ error: "User not found" });
       }
 
-      return res.json(updatedUser);
+      const userUpdatedDTO = userToUserDTO(updatedUser);
+      return res.json(userUpdatedDTO);
     } catch (error) {
       return res.status(500).json({ error: "Internal server error" });
     }

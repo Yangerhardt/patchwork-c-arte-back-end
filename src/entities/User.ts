@@ -1,10 +1,10 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/sequelize";
 import { v4 as uuidv4 } from "uuid";
-import { UUID } from "crypto";
+import bcrypt from "bcryptjs";
 
 class User extends Model {
-  public id!: UUID;
+  public id!: string;
   public deleted!: boolean;
   public deleted_at!: Date;
   public name!: string;
@@ -139,5 +139,11 @@ User.init(
 );
 
 // User.associate();
+
+User.beforeCreate(async (user) => {
+  const saltRounds = 12;
+  const hashedPassword = await bcrypt.hash(user.password, saltRounds);
+  user.password = hashedPassword;
+});
 
 export default User;
