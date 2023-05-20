@@ -1,11 +1,8 @@
 import { Request, Response } from "express";
 import { validate } from "class-validator";
 import { UserService } from "../service/user.serivce";
-import {
-  createNewUserFromValidation,
-  mapUserValidationData,
-  validateUser,
-} from "../utils/createNewUser";
+import { mapUserValidationData, validateUser } from "../utils/createNewUser";
+import User from "../entities/User";
 
 export class UserController {
   private readonly userService: UserService;
@@ -16,16 +13,14 @@ export class UserController {
 
   async createUser(req: Request, res: Response): Promise<Response> {
     try {
-      const userValidation = mapUserValidationData(req);
+      const userValidation: User = mapUserValidationData(req.body);
 
-      const validationErrors = await validateUser(userValidation);
-      if (validationErrors.length > 0) {
-        return res.status(400).json({ errors: validationErrors });
-      }
+      // const validationErrors = await validateUser(userValidation);
+      // if (validationErrors.length > 0) {
+      //   return res.status(400).json({ errors: validationErrors });
+      // }
 
-      const createdUser = await this.userService.createUser(
-        createNewUserFromValidation(userValidation)
-      );
+      const createdUser = await this.userService.createUser(userValidation);
 
       return res.status(201).json(createdUser);
     } catch (error) {

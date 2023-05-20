@@ -1,4 +1,4 @@
-import { CreateOptions, UpdateOptions } from "sequelize";
+import { UpdateOptions } from "sequelize";
 import User from "../entities/User";
 
 export class UserRepository {
@@ -14,11 +14,8 @@ export class UserRepository {
     return User.findByPk(id);
   }
 
-  async createUser(
-    user: Partial<User>,
-    options?: CreateOptions<User>
-  ): Promise<User> {
-    return User.create(user, options);
+  async createUser(user: Partial<User>): Promise<User> {
+    return User.create(user);
   }
 
   async updateUser(

@@ -1,11 +1,10 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/sequelize";
+import { v4 as uuidv4 } from "uuid";
 import { UUID } from "crypto";
 
 class User extends Model {
   public id!: UUID;
-  public created_at!: Date;
-  public updated_at!: Date;
   public deleted!: boolean;
   public deleted_at!: Date;
   public name!: string;
@@ -35,6 +34,7 @@ User.init(
       type: DataTypes.UUID,
       allowNull: false,
       primaryKey: true,
+      defaultValue: () => uuidv4(),
     },
 
     deleted: {
@@ -76,16 +76,16 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isStrongPassword: {
-          minLowercase: 1,
-          minUppercase: 1,
-          minNumbers: 1,
-          minSymbols: 1,
-          errorMessage:
-            "Password must have at least 1 lowerCase, 1 upperCase, 1 symbol and 1 number",
-        },
-      },
+      // validate: {
+      //   isStrongPassword: {
+      //     minLowercase: 1,
+      //     minUppercase: 1,
+      //     minNumbers: 1,
+      //     minSymbols: 1,
+      //     errorMessage:
+      //       "Password must have at least 1 lowerCase, 1 upperCase, 1 symbol and 1 number",
+      //   },
+      // },
     },
     zip: {
       type: DataTypes.STRING(8),
@@ -130,7 +130,7 @@ User.init(
     sequelize,
     modelName: "User",
     tableName: "users",
-    timestamps: false,
+    timestamps: true,
   }
 );
 

@@ -28,8 +28,9 @@ export class UserService {
 
   async createUser(user: User): Promise<User> {
     try {
-      return await this.userRepository.createUser(user);
+      return await this.userRepository.createUser(user.dataValues);
     } catch (error) {
+      console.log(error);
       console.log("Error creating a new user");
       throw new Error("Error creating a new user.");
     }
