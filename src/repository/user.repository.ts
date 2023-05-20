@@ -3,7 +3,11 @@ import User from "../entities/User";
 
 export class UserRepository {
   async findAllUsers(): Promise<User[]> {
-    return User.findAll();
+    return User.findAll({
+      where: {
+        deleted: false,
+      },
+    });
   }
 
   async findUserByEmail(email: string): Promise<User | null> {
