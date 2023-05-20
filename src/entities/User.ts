@@ -76,21 +76,25 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      // validate: {
-      //   isStrongPassword: {
-      //     minLowercase: 1,
-      //     minUppercase: 1,
-      //     minNumbers: 1,
-      //     minSymbols: 1,
-      //     errorMessage:
-      //       "Password must have at least 1 lowerCase, 1 upperCase, 1 symbol and 1 number",
-      //   },
-      // },
+      validate: {
+        isStrongPassword: {
+          minLowercase: 1,
+          minUppercase: 1,
+          minNumbers: 1,
+          minSymbols: 1,
+          errorMessage:
+            "Password must have at least 1 lowerCase, 1 upperCase, 1 symbol and 1 number",
+        },
+      },
     },
     zip: {
       type: DataTypes.STRING(8),
       allowNull: false,
       validate: {
+        len: {
+          args: [8, 8],
+          msg: "Zip must be 8 characters",
+        },
         isNumeric: {
           msg: "Must be only numbers",
         },

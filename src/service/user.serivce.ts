@@ -1,6 +1,10 @@
 import User from "../entities/User";
 import { UserRepository } from "../repository/user.repository";
 
+const passwordError = "isStrongPassword";
+const zipNumericError = "isNumeric";
+const zipLengthError = "len";
+
 export class UserService {
   private readonly userRepository: UserRepository;
 
@@ -30,15 +34,24 @@ export class UserService {
     try {
       return await this.userRepository.createUser(user.dataValues);
     } catch (error) {
-      console.log(error);
+      console.log(error?.errors[0]);
+      if (error?.errors[0]?.validatorName == passwordError) {
+        throw new Error("Password format incorrect");
+      }
+      if (error?.errors[0]?.validatorName == zipNumericError) {
+        throw new Error("Zip accept only numeric values");
+      }
+      if (error?.errors[0]?.validatorName == zipLengthError) {
+        throw new Error("Zip must be 8 characters");
+      }
       console.log("Error creating a new user");
-      throw new Error("Error creating a new user.");
+      throw new Error(error);
     }
   }
 
   async updateUser(id: string, user: Partial<User>): Promise<User | undefined> {
     try {
-      return await this.userRepository.updateUser(id, user);
+      return await this.userRepository.updateUser(id, user.dataValues);
     } catch (error) {
       console.log("Error updating user");
       throw new Error("Error updating user.");

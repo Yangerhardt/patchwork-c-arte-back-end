@@ -15,16 +15,16 @@ export class UserController {
     try {
       const userValidation: User = mapUserValidationData(req.body);
 
-      // const validationErrors = await validateUser(userValidation);
-      // if (validationErrors.length > 0) {
-      //   return res.status(400).json({ errors: validationErrors });
-      // }
+      const validationErrors = await validateUser(userValidation);
+      if (validationErrors.length > 0) {
+        return res.status(400).json({ errors: validationErrors });
+      }
 
       const createdUser = await this.userService.createUser(userValidation);
 
       return res.status(201).json(createdUser);
     } catch (error) {
-      return res.status(500).json({ error: "Internal server error" });
+      return res.status(500).json({ error: "Internal server error: " + error });
     }
   }
 
@@ -60,7 +60,7 @@ export class UserController {
   async updateUser(req: Request, res: Response): Promise<Response> {
     try {
       const userId = req.params.id;
-      const userValidation = mapUserValidationData(req);
+      const userValidation = mapUserValidationData(req.body);
 
       const validationErrors = await validate(userValidation);
       if (validationErrors.length > 0) {
