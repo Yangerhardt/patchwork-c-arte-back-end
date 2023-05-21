@@ -1,5 +1,5 @@
 import { validateOrReject } from "class-validator";
-import { IUser } from "../interfaces/IUser";
+import { IUser } from "../../interfaces/IUser";
 
 export async function validateUser(user: IUser) {
   try {

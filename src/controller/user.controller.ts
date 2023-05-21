@@ -6,7 +6,7 @@ import {
   userToUserDTO,
   usersToUserDTOs,
   validateUser,
-} from "../utils/createNewUser";
+} from "../utils/user/createNewUser";
 import User from "../entities/User";
 
 export class UserController {

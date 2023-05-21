@@ -49,7 +49,7 @@ export class ProductService {
     }
   }
 
-  async softDeleteProduct(id: string): Promise<Product | undefined> {
+  async deleteProduct(id: string): Promise<Product | undefined> {
     try {
       return await this.productRepository.deleteProduct(id);
     } catch (error) {

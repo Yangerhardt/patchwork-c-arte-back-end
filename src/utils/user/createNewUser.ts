@@ -1,6 +1,6 @@
-import User from "../entities/User";
+import User from "../../entities/User";
 import { validate } from "class-validator";
-import { UserDTO } from "../entities/dto/UserDTO";
+import { UserDTO } from "../../entities/dto/UserDTO";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function mapUserValidationData(reqBody: any): User {

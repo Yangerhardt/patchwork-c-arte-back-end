@@ -4,6 +4,7 @@ import { userRouter } from "./routes/user.routes";
 import cors from "cors";
 import winston from "winston";
 import sequelize from "./config/sequelize";
+import { productRouter } from "./routes/product.routes";
 
 const logger = winston.createLogger({
   level: "info",
@@ -21,11 +22,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use("/users", userRouter);
+app.use("/products", productRouter);
 
 async function startServer() {
   try {
     await sequelize.authenticate();
-    // await sequelize.sync();
 
     const port = process.env.PORT || 4000;
     app.listen(port, () => {
