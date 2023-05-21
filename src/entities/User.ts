@@ -36,23 +36,21 @@ User.init(
       primaryKey: true,
       defaultValue: () => uuidv4(),
     },
-
     deleted: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
       allowNull: true,
     },
-
     deleted_at: {
       type: DataTypes.DATE,
       defaultValue: null,
       allowNull: true,
     },
-
     role: {
       type: DataTypes.ENUM,
       values: ["USER", "ADMIN", "GUEST"],
       allowNull: false,
+      defaultValue: "USER",
     },
     name: {
       type: DataTypes.STRING,
