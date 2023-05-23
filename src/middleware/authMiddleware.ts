@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization;
@@ -7,11 +9,11 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   if (!token) {
     return res
       .status(401)
-      .json({ message: "Authentication token not provided" });
+      .json({ message: "Authentication token not provided. User not logged" });
   }
 
   try {
-    const decodedToken = jwt.verify(token, "seuSegredoJWT") as {
+    const decodedToken = jwt.verify(token, process.env.DB_JWT_SECRET) as {
       userId: number;
     };
 

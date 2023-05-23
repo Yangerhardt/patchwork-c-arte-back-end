@@ -29,7 +29,7 @@ export class ProductService {
 
   async createProduct(product: Product): Promise<Product> {
     try {
-      return await this.productRepository.createProduct(product);
+      return await this.productRepository.createProduct(product.dataValues);
     } catch (error) {
       console.log(error?.errors[0]);
       console.log("Error creating a new product");

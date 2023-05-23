@@ -1,10 +1,11 @@
 import "reflect-metadata";
 import express from "express";
-import { userRouter } from "./routes/user.routes";
 import cors from "cors";
 import winston from "winston";
 import sequelize from "./config/sequelize";
-import { productRouter } from "./routes/product.routes";
+import { userRouter } from "./routes/user.route";
+import { productRouter } from "./routes/product.route";
+import authRouter from "./routes/auth.route";
 
 const logger = winston.createLogger({
   level: "info",
@@ -23,6 +24,7 @@ app.use(cors());
 
 app.use("/users", userRouter);
 app.use("/products", productRouter);
+app.use("/auth", authRouter);
 
 async function startServer() {
   try {
