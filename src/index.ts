@@ -24,6 +24,7 @@ app.use(cors());
 
 app.use("/users", userRouter);
 app.use("/products", productRouter);
+app.use("/order", authRouter);
 app.use("/auth", authRouter);
 
 async function startServer() {

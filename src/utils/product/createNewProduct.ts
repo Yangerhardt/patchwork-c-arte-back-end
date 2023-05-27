@@ -24,8 +24,8 @@ export function mapProductValidationData(reqBody: any): Product {
   }
 }
 
-export async function validateProduct(user: Product): Promise<string[]> {
-  const validationErrors = await validate(user);
+export async function validateProduct(product: Product): Promise<string[]> {
+  const validationErrors = await validate(product);
   const errors: string[] = [];
 
   if (validationErrors.length > 0) {
