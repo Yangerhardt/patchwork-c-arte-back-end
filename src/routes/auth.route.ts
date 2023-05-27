@@ -21,14 +21,35 @@ authRouter.post("/", async (req: Request, res: Response) => {
       return res.status(401).json({ message: "Incorrect password" });
     }
 
-    const token = jwt.sign({ userId: user.id }, process.env.DB_JTW_SECRET, {
+    const token = jwt.sign({ userId: user.id }, process.env.JTW_SECRET, {
       expiresIn: "1h",
     });
 
     res.json({ token });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Erro interno do servidor" });
+    res.status(500).json({ message: "Internal server error" + error });
+  }
+});
+
+authRouter.get("/user-info", async (req: Request, res: Response) => {
+  const token = req.headers.authorization?.split(" ")[1];
+
+  try {
+    if (!token) {
+      throw new Error("Token was not identified.");
+    }
+    const decodedToken = jwt.verify(token, process.env.JTW_SECRET);
+    const user = await User.findOne({ where: { id: decodedToken } });
+
+    if (!user) {
+      throw new Error("User not found through token");
+    }
+
+    return user;
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" + error });
   }
 });
 

@@ -29,6 +29,7 @@ app.use("/auth", authRouter);
 async function startServer() {
   try {
     await sequelize.authenticate();
+    await sequelize.sync();
 
     const port = process.env.PORT || 4000;
     app.listen(port, () => {

@@ -44,7 +44,6 @@ export class UserService {
       if (error?.errors[0]?.validatorName == zipLengthError) {
         throw new Error("Zip must be 8 characters");
       }
-      console.log("Error creating a new user");
       throw new Error(error);
     }
   }

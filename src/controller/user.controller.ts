@@ -8,6 +8,7 @@ import {
   validateUser,
 } from "../utils/user/createNewUser";
 import User from "../entities/User";
+import { CustomError } from "../exception/CustomError";
 
 export class UserController {
   private readonly userService: UserService;
@@ -18,6 +19,16 @@ export class UserController {
 
   async createUser(req: Request, res: Response): Promise<Response> {
     try {
+      const { email } = req.body;
+      const existingUser = await User.findOne({
+        where: {
+          email: email,
+        },
+      });
+
+      if (existingUser) {
+        throw new CustomError("Email in use", 409);
+      }
       const userValidation: User = mapUserValidationData(req.body);
 
       const validationErrors = await validateUser(userValidation);
@@ -30,7 +41,7 @@ export class UserController {
 
       return res.status(201).json(userDTO);
     } catch (error) {
-      return res.status(500).json({ error: "Internal server error: " + error });
+      return res.status(error.status || 500).json({ error: "" + error });
     }
   }
 
