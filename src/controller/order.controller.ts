@@ -6,6 +6,8 @@ import {
 } from "../utils/order/createNewOrder";
 import { OrderService } from "../service/order.service";
 import { validate } from "class-validator";
+import { isValidUUID } from "../utils/order/isValidaUUID";
+import { CustomError } from "../exception/CustomError";
 
 export class OrderController {
   private readonly orderService: OrderService;
@@ -16,6 +18,24 @@ export class OrderController {
 
   async createOrder(req: Request, res: Response): Promise<Response> {
     try {
+      const { userId } = req.body;
+      const { productIds } = req.body;
+      let invalidaIds = 0;
+
+      if (!isValidUUID(userId)) {
+        invalidaIds++;
+      }
+
+      productIds.forEach((product) => {
+        if (isValidUUID(product)) {
+          invalidaIds++;
+        }
+      });
+
+      if (invalidaIds > 0) {
+        throw new CustomError("Invalid id format", 400);
+      }
+
       const orderValidation: Order = mapOrderValidationData(req.body);
 
       const validationErrors = await validateOrder(orderValidation);
@@ -23,9 +43,7 @@ export class OrderController {
         return res.status(400).json({ errors: validationErrors });
       }
 
-      const createdOrder = await this.orderService.createOrder(
-        orderValidation
-      );
+      const createdOrder = await this.orderService.createOrder(orderValidation);
 
       return res.status(201).json(createdOrder);
     } catch (error) {
