@@ -11,12 +11,6 @@ class Order extends Model {
   public paymentInfo!: string;
   public additionalNotes!: string;
 
-  // static associate() {
-  //   this.belongsToMany(User, {
-  //     through: "ProductUser",
-  //     foreignKey: "ProductId",
-  //   });
-  // }
 }
 
 Order.init(

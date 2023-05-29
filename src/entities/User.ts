@@ -19,13 +19,6 @@ class User extends Model {
   public streetComplement!: string;
   public city!: string;
   public state!: string;
-
-  // static associate() {
-  //   this.belongsToMany(Product, {
-  //     through: "UserProduct",
-  //     foreignKey: "userId",
-  //   });
-  // }
 }
 
 User.init(
@@ -135,8 +128,6 @@ User.init(
     timestamps: true,
   }
 );
-
-// User.associate();
 
 User.beforeCreate(async (user) => {
   const saltRounds = 12;

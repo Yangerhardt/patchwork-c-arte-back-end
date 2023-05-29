@@ -19,25 +19,14 @@ export class OrderController {
   async createOrder(req: Request, res: Response): Promise<Response> {
     try {
       const { userId } = req.body;
-      const { productIds } = req.body;
-      let invalidaIds = 0;
 
       if (!isValidUUID(userId)) {
-        invalidaIds++;
-      }
-
-      productIds.forEach((product) => {
-        if (isValidUUID(product)) {
-          invalidaIds++;
-        }
-      });
-
-      if (invalidaIds > 0) {
         throw new CustomError("Invalid id format", 400);
       }
 
       const orderValidation: Order = mapOrderValidationData(req.body);
 
+      console.log(orderValidation);
       const validationErrors = await validateOrder(orderValidation);
       if (validationErrors.length > 0) {
         return res.status(400).json({ errors: validationErrors });

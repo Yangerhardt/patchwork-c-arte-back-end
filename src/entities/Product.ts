@@ -16,13 +16,6 @@ class Product extends Model {
   public width!: number;
   public material!: string;
   public description!: string;
-
-  // static associate() {
-  //   this.belongsToMany(User, {
-  //     through: "ProductUser",
-  //     foreignKey: "ProductId",
-  //   });
-  // }
 }
 
 Product.init(

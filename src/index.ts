@@ -6,6 +6,7 @@ import sequelize from "./config/sequelize";
 import { userRouter } from "./routes/user.route";
 import { productRouter } from "./routes/product.route";
 import authRouter from "./routes/auth.route";
+import { orderRouter } from "./routes/order.route";
 
 const logger = winston.createLogger({
   level: "info",
@@ -24,7 +25,7 @@ app.use(cors());
 
 app.use("/users", userRouter);
 app.use("/products", productRouter);
-app.use("/order", authRouter);
+app.use("/orders", orderRouter);
 app.use("/auth", authRouter);
 
 async function startServer() {

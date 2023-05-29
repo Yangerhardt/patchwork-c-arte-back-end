@@ -12,8 +12,6 @@ export class OrderService {
     try {
       return await this.orderRepository.findAllOrders();
     } catch (err) {
-      console.log("Error finding orders.");
-      console.log(err);
       throw new Error("Error finding orders" + err);
     }
   }
@@ -22,7 +20,6 @@ export class OrderService {
     try {
       return await this.orderRepository.findOrderById(id);
     } catch (error) {
-      console.log("Error finding order with id: " + id);
       throw new Error("Error finding order ID.");
     }
   }
@@ -32,7 +29,6 @@ export class OrderService {
       return await this.orderRepository.createOrder(order.dataValues);
     } catch (error) {
       console.log(error?.errors[0]);
-      console.log("Error creating a new order");
       throw new Error(error);
     }
   }
@@ -44,7 +40,6 @@ export class OrderService {
     try {
       return await this.orderRepository.updateOrder(id, order.dataValues);
     } catch (error) {
-      console.log("Error updating order");
       throw new Error("Error updating user.");
     }
   }
@@ -53,7 +48,6 @@ export class OrderService {
     try {
       return await this.orderRepository.deleteOrder(id);
     } catch (error) {
-      console.log("Error to delete order with id: " + id);
       throw new Error("Error to delete order.");
     }
   }
