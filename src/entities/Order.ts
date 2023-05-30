@@ -1,6 +1,8 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/sequelize";
 import { v4 as uuidv4 } from "uuid";
+import User from "./User";
+import Product from "./Product";
 
 class Order extends Model {
   public id!: string;
@@ -11,6 +13,8 @@ class Order extends Model {
   public paymentInfo!: string;
   public additionalNotes!: string;
 
+  public readonly user?: User;
+  public readonly products?: Product[];
 }
 
 Order.init(
@@ -54,5 +58,17 @@ Order.init(
     timestamps: true,
   }
 );
+
+Order.belongsTo(User, {
+  foreignKey: "userId",
+  as: "user",
+});
+
+Order.belongsToMany(Product, {
+  through: "OrderProduct",
+  foreignKey: "orderId",
+  otherKey: "productId",
+  as: "products",
+});
 
 export default Order;

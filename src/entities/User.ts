@@ -2,6 +2,7 @@ import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/sequelize";
 import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcryptjs";
+import Order from "./Order";
 
 class User extends Model {
   public id!: string;
@@ -19,6 +20,8 @@ class User extends Model {
   public streetComplement!: string;
   public city!: string;
   public state!: string;
+
+  public readonly orders?: Order[];
 }
 
 User.init(
@@ -133,6 +136,11 @@ User.beforeCreate(async (user) => {
   const saltRounds = 12;
   const hashedPassword = await bcrypt.hash(user.password, saltRounds);
   user.password = hashedPassword;
+});
+
+User.hasMany(Order, {
+  foreignKey: "userId",
+  as: "orders",
 });
 
 export default User;

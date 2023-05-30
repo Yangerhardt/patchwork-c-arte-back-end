@@ -26,7 +26,6 @@ export class OrderController {
 
       const orderValidation: Order = mapOrderValidationData(req.body);
 
-      console.log(orderValidation);
       const validationErrors = await validateOrder(orderValidation);
       if (validationErrors.length > 0) {
         return res.status(400).json({ errors: validationErrors });

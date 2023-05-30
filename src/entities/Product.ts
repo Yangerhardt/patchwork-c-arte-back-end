@@ -1,6 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/sequelize";
 import { v4 as uuidv4 } from "uuid";
+import Order from "./Order";
 
 const categoryType = ["Toalha", "Bolsa", "Capa", "Jogo Americano", "Máscara"];
 
@@ -16,6 +17,8 @@ class Product extends Model {
   public width!: number;
   public material!: string;
   public description!: string;
+
+  public readonly orders?: Order[];
 }
 
 Product.init(
@@ -78,5 +81,12 @@ Product.init(
     timestamps: true,
   }
 );
+
+Product.belongsToMany(Order, {
+  through: "OrderProduct",
+  foreignKey: "productId",
+  otherKey: "orderId",
+  as: "orders",
+});
 
 export default Product;
