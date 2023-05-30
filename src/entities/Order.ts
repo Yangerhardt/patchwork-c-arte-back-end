@@ -33,10 +33,18 @@ Order.init(
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: "users",
+        key: "id",
+      },
     },
     productIds: {
       type: DataTypes.ARRAY(DataTypes.UUID),
       allowNull: false,
+      references: {
+        model: "products",
+        key: "id",
+      },
     },
     shippingInfo: {
       type: DataTypes.STRING,
@@ -58,17 +66,5 @@ Order.init(
     timestamps: true,
   }
 );
-
-Order.belongsTo(User, {
-  foreignKey: "userId",
-  as: "user",
-});
-
-Order.belongsToMany(Product, {
-  through: "OrderProduct",
-  foreignKey: "orderId",
-  otherKey: "productId",
-  as: "products",
-});
 
 export default Order;

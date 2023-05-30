@@ -1,46 +1,59 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('orders', {
+    await queryInterface.createTable("orders", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       id: {
         type: Sequelize.UUID
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       userId: {
-        type: Sequelize.STRING
+        type: Sequelize.UUID,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       },
       productIds: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.UUID),
+        defaultValue: [],
+        allowNull: false,
+        references: {
+          model: "products",
+          key: "id",
+        },
       },
       shippingInfo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       paymentInfo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       additionalNotes: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('orders');
-  }
+    await queryInterface.dropTable("orders");
+  },
 };

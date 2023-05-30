@@ -17,8 +17,6 @@ class Product extends Model {
   public width!: number;
   public material!: string;
   public description!: string;
-
-  public readonly orders?: Order[];
 }
 
 Product.init(
@@ -81,12 +79,5 @@ Product.init(
     timestamps: true,
   }
 );
-
-Product.belongsToMany(Order, {
-  through: "OrderProduct",
-  foreignKey: "productId",
-  otherKey: "orderId",
-  as: "orders",
-});
 
 export default Product;

@@ -138,9 +138,4 @@ User.beforeCreate(async (user) => {
   user.password = hashedPassword;
 });
 
-User.hasMany(Order, {
-  foreignKey: "userId",
-  as: "orders",
-});
-
 export default User;
