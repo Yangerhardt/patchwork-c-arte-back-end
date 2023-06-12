@@ -9,6 +9,8 @@ import {
 } from "../utils/user/createNewUser";
 import User from "../entities/User";
 import { CustomError } from "../exception/CustomError";
+import jwt from "jsonwebtoken";
+import { transporter } from "..";
 
 export class UserController {
   private readonly userService: UserService;
@@ -116,6 +118,64 @@ export class UserController {
       return res.json({ message: "User deleted successfully" });
     } catch (error) {
       return res.status(500).json({ error: "Internal server error" });
+    }
+  }
+
+  async forgotPassword(req: Request, res: Response): Promise<Response> {
+    try {
+      const { email } = req.body;
+
+      const user = await this.userService.findUserByEmail(email);
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+        expiresIn: "1h",
+      });
+
+      const resetUrl = `http://localhost:3000/reset-password?token=${token}`;
+      const mailOptions = {
+        from: "sua_conta_de_email",
+        to: email,
+        subject: "Redefinição de Senha",
+        text: `Clique no link a seguir para redefinir sua senha: ${resetUrl}`,
+      };
+
+      await transporter.sendMail(mailOptions);
+
+      return res.status(200).json({ message: "Email successfully sent." });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      return res.status(500).json({ message: "Error sending email" });
+    }
+  }
+
+  async resetPassword(req: Request, res: Response): Promise<Response> {
+    const { token, newPassword } = req.body;
+
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET) as {
+        userId: string;
+      };
+
+      if (decoded) {
+        const userId = decoded.userId;
+
+        const updatedUser = await this.userService.updateUser(userId, {
+          password: newPassword,
+        });
+
+        if (!updatedUser) {
+          return res.status(404).json({ error: "User not found" });
+        }
+      }
+
+      return res.status(200).json({ message: "Password redefined." });
+    } catch (error) {
+      console.error("Error redefining password:", error);
+      return res.status(400).json({ message: "Invalid or expired token." });
     }
   }
 }

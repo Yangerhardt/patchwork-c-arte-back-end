@@ -30,6 +30,15 @@ export class UserService {
     }
   }
 
+  async findUserByEmail(email: string): Promise<User | undefined> {
+    try {
+      return await this.userRepository.findUserByEmail(email);
+    } catch (error) {
+      console.log("Error finding user with email: " + email);
+      throw new Error("Error finding user Email.");
+    }
+  }
+
   async createUser(user: User): Promise<User> {
     try {
       return await this.userRepository.createUser(user.dataValues);

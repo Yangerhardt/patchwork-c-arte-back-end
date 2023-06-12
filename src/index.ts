@@ -8,6 +8,7 @@ import { productRouter } from "./routes/product.route";
 import authRouter from "./routes/auth.route";
 import { orderRouter } from "./routes/order.route";
 import Redis from "ioredis";
+import nodemailer from "nodemailer"
 
 const logger = winston.createLogger({
   level: "info",
@@ -19,6 +20,14 @@ const logger = winston.createLogger({
 });
 
 const redisClient = new Redis();
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'seu_email@gmail.com',
+    pass: 'sua_senha',
+  },
+});
 
 const app = express();
 
@@ -47,4 +56,4 @@ async function startServer() {
 
 startServer();
 
-export { redisClient };
+export { redisClient, transporter };

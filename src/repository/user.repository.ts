@@ -1,4 +1,4 @@
-import { Op, UpdateOptions } from "sequelize";
+import { UpdateOptions } from "sequelize";
 import User from "../entities/User";
 
 export class UserRepository {
@@ -42,7 +42,7 @@ export class UserRepository {
     }
 
     user.deleted = true;
-    user.deleted_at = new Date(); 
+    user.deleted_at = new Date();
     return user.save();
   }
 }
