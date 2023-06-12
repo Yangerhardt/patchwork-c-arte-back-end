@@ -29,7 +29,17 @@ export class OrderService {
 
   async findOrderById(id: string): Promise<Order | undefined> {
     try {
-      return await this.orderRepository.findOrderById(id);
+      const cachedSingleOrder = await redisClient.get("singleOrder");
+
+      if (cachedSingleOrder) {
+        return JSON.parse(cachedSingleOrder);
+      }
+
+      const singleOrder = await this.orderRepository.findOrderById(id);
+
+      redisClient.set("singleOrder", JSON.stringify(singleOrder), "EX", 3600);
+
+      return singleOrder;
     } catch (error) {
       throw new Error("Error finding order ID.");
     }
