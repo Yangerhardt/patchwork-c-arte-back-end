@@ -12,15 +12,15 @@ export class ProductService {
   async findAllProducts(): Promise<Product[]> {
     try {
       const cachedProducts = await redisClient.get("products");
-  
+
       if (cachedProducts) {
         return JSON.parse(cachedProducts);
       }
-  
+
       const products = await this.productRepository.findAllProducts();
-  
+
       await redisClient.set("products", JSON.stringify(products), "EX", 3600);
-  
+
       return products;
     } catch (err) {
       console.log("Error finding products.");
@@ -31,7 +31,22 @@ export class ProductService {
 
   async findProductById(id: string): Promise<Product | undefined> {
     try {
-      return await this.productRepository.findProductById(id);
+      const cachedProducts = await redisClient.get("singleProduct");
+
+      if (cachedProducts) {
+        return JSON.parse(cachedProducts);
+      }
+
+      const singleProduct = await this.productRepository.findProductById(id);
+
+      await redisClient.set(
+        "singleProduct",
+        JSON.stringify(singleProduct),
+        "EX",
+        3600
+      );
+
+      return singleProduct;
     } catch (error) {
       console.log("Error finding product with id: " + id);
       throw new Error("Error finding product ID.");
