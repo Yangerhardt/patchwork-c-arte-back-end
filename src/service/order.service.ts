@@ -1,3 +1,4 @@
+import { redisClient } from "..";
 import Order from "../entities/Order";
 import { OrderRepository } from "../repository/order.repository";
 
@@ -10,7 +11,17 @@ export class OrderService {
 
   async findAllOrders(): Promise<Order[]> {
     try {
-      return await this.orderRepository.findAllOrders();
+      const cachedOrders = await redisClient.get("orders");
+
+      if (cachedOrders) {
+        return JSON.parse(cachedOrders);
+      }
+
+      const orders = await this.orderRepository.findAllOrders();
+
+      redisClient.set("orders", JSON.stringify(orders), "EX", 3600);
+
+      return orders;
     } catch (err) {
       throw new Error("Error finding orders" + err);
     }
