@@ -137,7 +137,7 @@ export class UserController {
 
       const resetUrl = `http://localhost:3000/reset-password?token=${token}`;
       const mailOptions = {
-        from: "sua_conta_de_email",
+        from: process.env.EMAIL_USERNAME,
         to: email,
         subject: "Redefinição de Senha",
         text: `Clique no link a seguir para redefinir sua senha: ${resetUrl}`,

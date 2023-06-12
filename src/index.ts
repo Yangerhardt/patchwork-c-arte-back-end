@@ -24,8 +24,8 @@ const redisClient = new Redis();
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'seu_email@gmail.com',
-    pass: 'sua_senha',
+    user: process.env.EMAIL_USERNAME,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
