@@ -1,3 +1,4 @@
+import { redisClient } from "..";
 import Product from "../entities/Product";
 import { ProductRepository } from "../repository/product.repository";
 
@@ -10,7 +11,17 @@ export class ProductService {
 
   async findAllProducts(): Promise<Product[]> {
     try {
-      return await this.productRepository.findAllProducts();
+      const cachedProducts = await redisClient.get("products");
+  
+      if (cachedProducts) {
+        return JSON.parse(cachedProducts);
+      }
+  
+      const products = await this.productRepository.findAllProducts();
+  
+      await redisClient.set("products", JSON.stringify(products), "EX", 3600);
+  
+      return products;
     } catch (err) {
       console.log("Error finding products.");
       console.log(err);
