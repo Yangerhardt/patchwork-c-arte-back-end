@@ -7,6 +7,7 @@ import { userRouter } from "./routes/user.route";
 import { productRouter } from "./routes/product.route";
 import authRouter from "./routes/auth.route";
 import { orderRouter } from "./routes/order.route";
+import Redis from "ioredis";
 
 const logger = winston.createLogger({
   level: "info",
@@ -16,6 +17,8 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: "logs.log" }),
   ],
 });
+
+const redisClient = new Redis();
 
 const app = express();
 
