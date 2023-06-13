@@ -32,6 +32,7 @@ export class OrderRepository {
     if (!order) {
       throw new Error(`Order with ID ${id} not found`);
     }
-    return order.save();
+    await order.destroy();
+    return order;
   }
 }

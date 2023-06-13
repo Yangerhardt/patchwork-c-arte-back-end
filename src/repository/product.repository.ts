@@ -32,6 +32,7 @@ export class ProductRepository {
     if (!product) {
       throw new Error(`User with ID ${id} not found`);
     }
-    return product.save();
+    await product.destroy();
+    return product;
   }
 }
